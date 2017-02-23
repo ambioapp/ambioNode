@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jal5313/ambioNode.git"
+    "url": "git+https://github.com/ambioapp/ambioNode.git"
   },
   "author": "",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/jal5313/ambioNode/issues"
+    "url": "https://github.com/ambioapp/ambioNode/issues"
   },
-  "homepage": "https://github.com/jal5313/ambioNode#readme",
+  "homepage": "https://github.com/ambioapp/ambioNode#readme",
   "devDependencies": {
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
