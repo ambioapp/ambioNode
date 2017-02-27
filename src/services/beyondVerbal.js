@@ -11,9 +11,9 @@ const analyze = (request, response) => {
         tokenUrl: 'https://token.beyondverbal.com/token',
         serverUrl: 'https://apiv3.beyondverbal.com/v1/recording/',
     },
-    apiKey: '---API KEY HERE---',
-    token: '',
-};
+        apiKey: 'ad81cbc4-d24f-4514-86db-8bc51381bd5c',
+        token: '',
+    };
     
     const authenticate = (options) => {        
         
@@ -40,7 +40,8 @@ const analyze = (request, response) => {
             });
             res.on('end', () => {
                 var jsonResponse = JSON.parse(string);
-                analyzeFile(options.apiKey,  fs.readFileSync(`${__dirname}/../../../test.wav`));
+                options.token = jsonResponse.access_token;
+                analyzeFile(options.apiKey, options.token,  fs.readFileSync(`${__dirname}/../../../test.wav`));
             });
           });
 
@@ -53,18 +54,20 @@ const analyze = (request, response) => {
           req.end();
     }
     
-    function analyzeFile(apiKey, content, interval) {
-        console.log('test');
+    function analyzeFile(apiKey, token, content, interval) {
         //var dfd = $.Deferred();
         var startUrl = options.url.serverUrl + 'start';
 
         //console.log('url::' + startUrl + ' token:' + options.token);
         
         const postData = JSON.stringify({
-            'data-format': {
-                'type': 'WAV',
+            dataFormat: {
+                type: 'WAV',
             }
         });
+        
+        console.log(token);
+        console.dir(postData);
         
         const reqOptions = {
             host: "apiv3.beyondverbal.com",
@@ -73,12 +76,14 @@ const analyze = (request, response) => {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Content-Length': Buffer.byteLength(postData),
-                'Authorization': "Bearer " + options.token,
+                'Authorization': "Bearer " + token,
             }
         }
+        
+        console.dir(reqOptions);
             var string = '';
         
-          var req = http.request(reqOptions, (res) => {
+          var startReq = http.request(reqOptions, (res) => {
             res.setEncoding('utf8');
             res.on('data', (chunk) => {
                 string += chunk;
@@ -90,13 +95,13 @@ const analyze = (request, response) => {
             });
           });
 
-          req.on('error', (e) => {
+          startReq.on('error', (e) => {
             console.log(`problem with request: ${e.message}`);
           });
 
           // write data to request body
-          req.write(postData);
-          req.end();
+          startReq.write(postData);
+          startReq.end();
         
         /*$.ajax({
                 url: startUrl,
