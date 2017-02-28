@@ -1,4 +1,8 @@
-const beyondVerbalService = require('../services/beyondVerbal.js');
+var Analyzer = require('../services/beyondVerbal.js')
+var analyzer = new Analyzer('KEY')
+
+const fs = require('fs');
+
 
 const respondJson = (request, response, status, object) => {
   response.writeHead(status, { 'Content-Type': 'application/json' });
@@ -7,9 +11,11 @@ const respondJson = (request, response, status, object) => {
 };
 
 const getBeyondVerbal = (request, response) => {
-  const responseJson = beyondVerbalService.analyze(request, response);
+    analyzer.analyze(fs.createReadStream(`${__dirname}/../../../test.wav`),function(err,analysis){
+        console.log(analysis);
+        respondJson(request, response, 200, analysis);
+    });
     
-  respondJson(request, response, 200, responseJson);
 }
 
 const notFound = (request, response) => {
