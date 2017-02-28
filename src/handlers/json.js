@@ -10,12 +10,11 @@ const respondJson = (request, response, status, object) => {
   response.end();
 };
 
-const getBeyondVerbal = (request, response) => {
-    analyzer.analyze(fs.createReadStream(`${__dirname}/../../../test.wav`),function(err,analysis){
+const getBeyondVerbal = (request, response, params) => {
+    analyzer.analyze(params.file, function(err,analysis){
         console.log(analysis);
         respondJson(request, response, 200, analysis);
     });
-    
 }
 
 const notFound = (request, response) => {
