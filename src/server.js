@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const query = require('querystring');
 
 const staticFileHandler = require('./handlers/staticFiles.js');
 const jsonHandler = require('./handlers/json.js');
