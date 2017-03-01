@@ -10,10 +10,10 @@ const respondJson = (request, response, status, object) => {
   response.end();
 };
 
-const getBeyondVerbal = (request, response, params) => {
-    console.log('===params from json.js below===');
-    console.log(params.file);
-    analyzer.analyze(params.file, function(err,analysis){
+const getBeyondVerbal = (request, response, body) => {
+    //console.log('===params from json.js below===');
+    //console.log(params.file);
+    analyzer.analyze(body, function(err,analysis){
         console.log(analysis);
         respondJson(request, response, 200, analysis);
     });
