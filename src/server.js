@@ -1,6 +1,7 @@
 const http = require('http');
 const url = require('url');
 const query = require('querystring');
+const fs = require('fs');
 
 const staticFileHandler = require('./handlers/staticFiles.js');
 const jsonHandler = require('./handlers/json.js');
@@ -34,9 +35,9 @@ const onRequest = (request, response) => {const parsedUrl = url.parse(request.ur
         });
 
         request.on('end', () => {
-          fs.writeFile('../files/test.wav', req.body, function(err) {
-              
-          });
+          //fs.writeFile('../files/test.wav', request.body, function(err) {
+          //  
+          //});
             
           jsonHandler.getBeyondVerbal(request, response);
         });
