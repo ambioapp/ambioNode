@@ -36,6 +36,8 @@ const onRequest = (request, response) => {const parsedUrl = url.parse(request.ur
         request.on('end', () => {
           const bodyString = Buffer.concat(body).toString();
           const bodyParams = query.parse(bodyString);
+            console.log('===body string===');
+            console.log(bodyString);
           jsonHandler.getBeyondVerbal(request, response, bodyParams);
         });
       }

@@ -11,6 +11,8 @@ const respondJson = (request, response, status, object) => {
 };
 
 const getBeyondVerbal = (request, response, params) => {
+    console.log('===params from json.js below===');
+    console.log(params);
     analyzer.analyze(params.file, function(err,analysis){
         console.log(analysis);
         respondJson(request, response, 200, analysis);
