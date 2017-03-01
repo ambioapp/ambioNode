@@ -10,10 +10,10 @@ const respondJson = (request, response, status, object) => {
   response.end();
 };
 
-const getBeyondVerbal = (request, response, body) => {
+const getBeyondVerbal = (request, response) => {
     //console.log('===params from json.js below===');
     //console.log(params.file);
-    analyzer.analyze(body, function(err,analysis){
+    analyzer.analyze(fs.createReadStream('../../files/test.wav'), function(err,analysis){
         console.log(analysis);
         respondJson(request, response, 200, analysis);
     });
