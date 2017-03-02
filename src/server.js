@@ -35,9 +35,12 @@ const onRequest = (request, response) => {const parsedUrl = url.parse(request.ur
         });
 
         request.on('end', () => {
-          //fs.writeFile('../files/test.wav', request.body, function(err) {
-          //  
-          //});
+            
+            const bodyString = Buffer.concat(body).toString();
+            const bodyParams = query.parse(bodyString);
+          fs.writeFile(`${__dirname}../files/test.wav`, bodyParams.file, function(err) {
+            
+          });
             
           jsonHandler.getBeyondVerbal(request, response);
         });
