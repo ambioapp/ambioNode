@@ -8,16 +8,28 @@ const jsonHandler = require('./handlers/json.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-const onRequest = (request, response) => {const parsedUrl = url.parse(request.url);
+const onRequest = (request, response) => {
+  const parsedUrl = url.parse(request.url);
 
   switch (request.method) {
     case 'GET':
       if (parsedUrl.pathname === '/') {
         staticFileHandler.getIndex(request, response);
-      } else {
+      } 
+        
+        else if (parsedUrl.pathname === '/css/app.css') {
+        staticFileHandler.getCSS(request, response);
+      } 
+        
+        else if (parsedUrl.pathname === '/images') {
+        staticFileHandler.getImg(request, response);
+      } 
+        
+        else {
         jsonHandler.notFound(request, response);
       }
       break;
+
     case 'POST':
       if (parsedUrl.pathname === '/getBeyondVerbal') {
         const res = response;
@@ -35,17 +47,18 @@ const onRequest = (request, response) => {const parsedUrl = url.parse(request.ur
         });
 
         request.on('end', () => {
-            
-            const bodyString = Buffer.concat(body).toString();
-            const bodyParams = query.parse(bodyString);
-          fs.writeFile(`${__dirname}../files/test.wav`, bodyParams.file, function(err) {
-            
+          const bodyString = Buffer.concat(body).toString();
+          const bodyParams = query.parse(bodyString);
+          fs.writeFile(`${__dirname}../files/test.wav`, bodyParams.file, (err) => {
+
           });
-            
+
           jsonHandler.getBeyondVerbal(request, response);
         });
       }
       break;
+
+
     default:
       jsonHandler.notFound(request, response);
   }
