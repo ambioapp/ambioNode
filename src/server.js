@@ -22,7 +22,7 @@ const onRequest = (request, response) => {const parsedUrl = url.parse(request.ur
       if (parsedUrl.pathname === '/getBeyondVerbal') {
         const res = response;
 
-        const body = '';
+        var body = '';
 
         request.on('error', (err) => {
           console.dir(err);
@@ -38,6 +38,7 @@ const onRequest = (request, response) => {const parsedUrl = url.parse(request.ur
             var data = query.parse(body);
             
           fs.writeFile(`${__dirname}/../files/test.wav`, data.file, function(err) {
+              console.log(err);
           });
             
           jsonHandler.getBeyondVerbal(request, response);
