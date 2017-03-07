@@ -24,6 +24,7 @@
     "eslint-plugin-import": "^2.2.0"
   },
   "dependencies": {
+    "express": "^4.15.2",
     "extend": "^3.0.0",
     "request": "^2.79.0"
   }

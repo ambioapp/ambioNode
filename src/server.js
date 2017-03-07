@@ -1,12 +1,32 @@
+const express = require('express');
 const http = require('http');
 const url = require('url');
 const query = require('querystring');
 const fs = require('fs');
+const path    = require("path");
+
+
+var app = express();
 
 const staticFileHandler = require('./handlers/staticFiles.js');
 const jsonHandler = require('./handlers/json.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(staticFileHandler.getIndex()))
+});
+
+app.use(function(req, res) {
+   res.send('404, not found'); 
+});
+
+app.listen(port, function () {
+  console.log(`Example app listening on port: ${port}!`)
+})
+
+
+/*
 
 const onRequest = (request, response) => {const parsedUrl = url.parse(request.url);
 
@@ -53,3 +73,4 @@ const onRequest = (request, response) => {const parsedUrl = url.parse(request.ur
 http.createServer(onRequest).listen(port);
 
 console.log(`Listening on 127.0.0.1: ${port}`);
+*/
