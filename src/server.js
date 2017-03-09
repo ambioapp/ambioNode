@@ -1,4 +1,6 @@
 const express = require('express');
+var multer  = require('multer')
+var upload = multer({ dest: 'files/' })
 const http = require('http');
 const url = require('url');
 const query = require('querystring');
@@ -16,6 +18,11 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 app.get('/', function(req, res) {
     res.sendFile(path.join(staticFileHandler.getIndex()))
 });
+
+app.post('/getBeyondVerbal', upload.single('file'), function (req, res, next) {
+    console.log(req.file.size);
+    res.send('File Uploaded, sort out BV before proceeding.');
+ });
 
 app.use(function(req, res) {
    res.send('404, not found'); 
