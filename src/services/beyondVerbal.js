@@ -26,6 +26,8 @@ function Analyzer(apiKey, opts) {
     var tokenCahced = null;
     var options = extend({}, defaults, opts);
     this.analyze = function (stream, callback) {
+        console.log('===File Stream Below===');
+        console.log(stream);
 
         if (!tokenCahced) {
             return getToken(apiKey, options, function (err, token) {
