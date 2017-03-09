@@ -1,11 +1,21 @@
 const express = require('express');
 var multer  = require('multer')
-var upload = multer({ dest: 'files/' })
 const http = require('http');
 const url = require('url');
 const query = require('querystring');
 const fs = require('fs');
 const path    = require("path");
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, `${__dirname}/../files`)
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + '.wav')
+  }
+})
+
+var upload = multer({ storage: storage })
 
 
 var app = express();
@@ -15,12 +25,20 @@ const jsonHandler = require('./handlers/json.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
+app.use(function (req, res, next) {
+	console.log(req);
+	console.log('Incoming Req above');
+	next();
+});
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(staticFileHandler.getIndex()))
 });
 
-app.post('/getBeyondVerbal', upload.single('file'), function (req, res, next) {
+app.post('/getBeyondVerbal', upload.single('test'), function (req, res, next) {
     console.log(req.file.size);
+	console.log(req.file.mimetype);
+	console.log(req.file.encoding);
     res.send('File Uploaded, sort out BV before proceeding.');
  });
 
