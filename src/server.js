@@ -1,10 +1,5 @@
 const express = require('express');
-var multer  = require('multer')
-const http = require('http');
-const url = require('url');
-const query = require('querystring');
-const fs = require('fs');
-const path    = require("path");
+var multer  = require('multer');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
