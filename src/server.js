@@ -31,10 +31,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/getBeyondVerbal', upload.single('test'), function (req, res, next) {
-    console.log(req.file.size);
-	console.log(req.file.mimetype);
-	console.log(req.file.encoding);
-    res.send('File Uploaded, sort out BV before proceeding.');
+    jsonHandler.getBeyondVerbal(req, res);
  });
 
 app.use(function(req, res) {
