@@ -15,17 +15,11 @@ const onRequest = (request, response) => {
     case 'GET':
       if (parsedUrl.pathname === '/') {
         staticFileHandler.getIndex(request, response);
-      } 
-        
-        else if (parsedUrl.pathname === '/css/app.css') {
+      } else if (parsedUrl.pathname === '/css/app.css') {
         staticFileHandler.getCSS(request, response);
-      } 
-        
-        else if (parsedUrl.pathname === '/images') {
+      } else if (parsedUrl.pathname === '/images') {
         staticFileHandler.getImg(request, response);
-      } 
-        
-        else {
+      } else {
         jsonHandler.notFound(request, response);
       }
       break;
