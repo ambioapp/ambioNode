@@ -12,7 +12,7 @@ const analyzeBeyondVerbal = (analysis) => {
     var temper = analysis.analysisSegments[0].analysis.Temper;
     var valence = analysis.analysisSegments[0].analysis.Valence;
     
-    responseJSON.moodID = moodTableService.moodTable[arousal][temper][valence].moodID;
+    responseJSON.moodID = moodTableService.analyzeATV(arousal, temper, valence);
     
     /*
     test = {
