@@ -2,113 +2,233 @@ const analyzeATV = (arousal, temper, valence) => {
     if (arousal.group === 'low') {
         if (temper.group === 'low') {
             if (valence.group === 'low') {
-                return 111;
+                return {
+                    code: 111,
+                    value: 'depressed',
+                };
             } else if (valence.group === 'medium') {
-                return 112;
+                return {
+                    code: 112,
+                    value: 'calm',
+                };
             } else if (valence.group === 'high') {
-                return 113;
+                return {
+                    code: 113,
+                    value: 'content',
+                };
             } else {
-                return 110;
+                return {
+                    code: 110,
+                    value: 'err: 110',
+                };
             }
         } else if (temper.group === 'medium') {
             if (valence.group === 'low') {
-                return 121;
+                return {
+                    code: 121,
+                    value: 'sad',
+                };
             } else if (valence.group === 'medium') {
-                return 122;
+                return {
+                    code: 122,
+                    value: 'neutral',
+                };
             } else if (valence.group === 'high') {
-                return 123;
+                return {
+                    code: 123,
+                    value: 'happy'
+                };
             } else {
-                return 120;
+                return {
+                    code: 120,
+                    value: 'err: 120',
+                };
             }
         } else if (temper.group === 'high') {
             if (valence.group === 'low') {
-                return 131;
+                return {
+                    code: 131,
+                    value: 'angry',
+                };
             }
             else if (valence.group === 'medium') {
-                return 132;
+                return {
+                    code: 132,
+                    value: 'excited',
+                };
             }
             else if (valence.group === 'high') {
-                return 133;
+                return {
+                    code: 133,
+                    value: 'joyful',
+                };
             } else {
-                return 130;
+                return {
+                    code: 130,
+                    value: 'err: 130',
+                };
             }
         } else {
-            return 100;
+            return {
+                code: 100,
+                value: 'err: 100',
+            };
         }
     } else if (arousal.group === 'medium') {
         if (temper.group === 'low') {
             if (valence.group === 'low') {
-                return 211;
+                return {
+                    code: 211,
+                    value: 'depressed',
+                };
             } else if (valence.group === 'medium') {
-                return 212;
+                return {
+                    code: 212,
+                    value: 'calm',
+                };
             } else if (valence.group === 'high') {
-                return 213;
+                return {
+                    code: 213,
+                    value: 'content',
+                };
             } else {
-                return 210;
+                return {
+                    code: 210,
+                    value: 'err: 210',
+                };
             }
         } else if (temper.group === 'medium') {
             if (valence.group === 'low') {
-                return 221;
+                return {
+                    code: 221,
+                    value: 'sad',
+                };
             } else if (valence.group === 'medium') {
-                return 222;
+                return {
+                    code: 222,
+                    value: 'neutral',
+                };
             } else if (valence.group === 'high') {
-                return 223;
+                return {
+                    code: 223,
+                    value: 'happy',
+                };
             } else {
-                return 220;
+                return {
+                    code: 220,
+                    value: 'err: 220',
+                };
             }
         } else if (temper.group === 'high') {
             if (valence.group === 'low') {
-                return 231;
+                return {
+                    code: 231,
+                    value: 'angry',
+                };
             }
             else if (valence.group === 'medium') {
-                return 232;
+                return {
+                    code: 232,
+                    value: 'excited',
+                };
             }
             else if (valence.group === 'high') {
-                return 233;
+                return {
+                    code: 233,
+                    value: 'joyful',
+                };
             } else {
-                return 230;
+                return {
+                    code: 230,
+                    value: 'err: 230',
+                };
             }
         } else {
-            return 200;
+            return {
+                code: 200,
+                value: 'err: 200',
+            };
         }
     } else if (arousal.group === 'high') {
         if (temper.group === 'low') {
             if (valence.group === 'low') {
-                return 311;
+                return {
+                    code: 311,
+                    value: 'depressed',
+                };
             } else if (valence.group === 'medium') {
-                return 312;
+                return {
+                    code: 312,
+                    value: 'calm',
+                };
             } else if (valence.group === 'high') {
-                return 313;
+                return {
+                    code: 313,
+                    value: 'content',
+                };
             } else {
-                return 310;
+                return {
+                    code: 310,
+                    value: 'err: 310',
+                };
             }
         } else if (temper.group === 'medium') {
             if (valence.group === 'low') {
-                return 321;
+                return {
+                    code: 321,
+                    value: 'sad',
+                };
             } else if (valence.group === 'medium') {
-                return 322;
+                return {
+                    code: 322,
+                    value: 'neutral',
+                };
             } else if (valence.group === 'high') {
-                return 323;
+                return {
+                    code: 323,
+                    value: 'happy',
+                };
             } else {
-                return 320;
+                return {
+                    code: 320,
+                    value: 'err: 320',
+                };
             }
         } else if (temper.group === 'high') {
             if (valence.group === 'low') {
-                return 331;
+                return {
+                    code: 331,
+                    value: 'angry',
+                };
             }
             else if (valence.group === 'medium') {
-                return 332;
+                return {
+                    code: 332,
+                    value: 'excited',
+                };
             }
             else if (valence.group === 'high') {
-                return 333;
+                return {
+                    code: 333,
+                    value: 'joyful',
+                };
             } else {
-                return 330;
+                return {
+                    code: 330,
+                    value: 'err: 330',
+                };
             }
         } else {
-            return 300;
+            return {
+                code: 300,
+                value: 'err: 300',
+            };
         }
     } else {
-       return 0; 
+        return {
+            code: 0,
+            value: 'err: 0',
+        };
     }
 }
 
