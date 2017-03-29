@@ -1,5 +1,5 @@
 var Analyzer = require('../services/beyondVerbal.js')
-var analyzer = new Analyzer('KEY')
+var analyzer = new Analyzer('ad81cbc4-d24f-4514-86db-8bc51381bd5c')
 
 const fs = require('fs');
 const resultParser = require('./../services/resultParser.js');
