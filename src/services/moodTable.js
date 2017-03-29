@@ -9,7 +9,7 @@ const analyzeATV = (arousal, temper, valence) => {
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 112,
-                    value: 'calm',
+                    value: 'relaxed',
                 };
             } else if (valence.Group === 'positive') {
                 return {
@@ -26,17 +26,17 @@ const analyzeATV = (arousal, temper, valence) => {
             if (valence.Group === 'negative') {
                 return {
                     code: 121,
-                    value: 'sad',
+                    value: 'depressed',
                 };
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 122,
-                    value: 'neutral',
+                    value: 'relaxed',
                 };
             } else if (valence.Group === 'positive') {
                 return {
                     code: 123,
-                    value: 'happy'
+                    value: 'joyful'
                 };
             } else {
                 return {
@@ -54,7 +54,7 @@ const analyzeATV = (arousal, temper, valence) => {
             else if (valence.Group === 'neutral') {
                 return {
                     code: 132,
-                    value: 'excited',
+                    value: 'joyful',
                 };
             }
             else if (valence.Group === 'positive') {
@@ -74,7 +74,7 @@ const analyzeATV = (arousal, temper, valence) => {
                 value: 'err: 100',
             };
         }
-    } else if (arousal.Group === 'mid') {
+    } else if (arousal.Group === 'neutral') {
         if (temper.Group === 'low') {
             if (valence.Group === 'negative') {
                 return {
@@ -84,7 +84,7 @@ const analyzeATV = (arousal, temper, valence) => {
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 212,
-                    value: 'calm',
+                    value: 'relaxed',
                 };
             } else if (valence.Group === 'positive') {
                 return {
@@ -101,17 +101,17 @@ const analyzeATV = (arousal, temper, valence) => {
             if (valence.Group === 'negative') {
                 return {
                     code: 221,
-                    value: 'sad',
+                    value: 'depressed',
                 };
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 222,
-                    value: 'neutral',
+                    value: 'content',
                 };
             } else if (valence.Group === 'positive') {
                 return {
                     code: 223,
-                    value: 'happy',
+                    value: 'joyful',
                 };
             } else {
                 return {
@@ -129,7 +129,7 @@ const analyzeATV = (arousal, temper, valence) => {
             else if (valence.Group === 'neutral') {
                 return {
                     code: 232,
-                    value: 'excited',
+                    value: 'joyful',
                 };
             }
             else if (valence.Group === 'positive') {
@@ -159,7 +159,7 @@ const analyzeATV = (arousal, temper, valence) => {
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 312,
-                    value: 'calm',
+                    value: 'relaxed',
                 };
             } else if (valence.Group === 'positive') {
                 return {
@@ -176,17 +176,17 @@ const analyzeATV = (arousal, temper, valence) => {
             if (valence.Group === 'negative') {
                 return {
                     code: 321,
-                    value: 'sad',
+                    value: 'depressed',
                 };
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 322,
-                    value: 'neutral',
+                    value: 'content',
                 };
             } else if (valence.Group === 'positive') {
                 return {
                     code: 323,
-                    value: 'happy',
+                    value: 'joyful',
                 };
             } else {
                 return {
@@ -204,7 +204,7 @@ const analyzeATV = (arousal, temper, valence) => {
             else if (valence.Group === 'neutral') {
                 return {
                     code: 332,
-                    value: 'excited',
+                    value: 'joyful',
                 };
             }
             else if (valence.Group === 'positive') {
