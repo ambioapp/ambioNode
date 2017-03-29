@@ -1,15 +1,16 @@
 const moodTableService = require('./moodTable.js');
 
 const analyzeBeyondVerbal = (analysis) => {
+    console.log(analysis);
     console.log('===Parsing Results===');
     
     var responseJSON = {
         moodID: 0,
     }
     
-    var arousal = analysis.analysisSegments[0].analysis.Arousal;
-    var temper = analysis.analysisSegments[0].analysis.Temper;
-    var valence = analysis.analysisSegments[0].analysis.Valence;
+    var arousal = analysis.result.analysisSegments[0].analysis.Arousal;
+    var temper = analysis.result.analysisSegments[0].analysis.Temper;
+    var valence = analysis.result.analysisSegments[0].analysis.Valence;
     
     console.log(`Arousal: ${arousal.Group} Temper: ${temper.Group} Valence: ${valence.Group}`);
     

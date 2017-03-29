@@ -21,8 +21,6 @@ const jsonHandler = require('./handlers/json.js');
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 app.use(function (req, res, next) {
-	console.log(req);
-	console.log('Incoming Req above');
 	next();
 });
 
