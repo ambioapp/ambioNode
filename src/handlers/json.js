@@ -2,32 +2,16 @@ var Analyzer = require('../services/beyondVerbal.js')
 var analyzer = new Analyzer('KEY')
 
 const fs = require('fs');
-
-
-const respondJson = (request, response, status, object) => {
-  response.writeHead(status, { 'Content-Type': 'application/json' });
-  response.write(JSON.stringify(object));
-  response.end();
-};
+const resultParser = require('./../services/resultParser.js');
 
 const getBeyondVerbal = (request, response) => {
     //console.log('===params from json.js below===');
     //console.log(params.file);
-    analyzer.analyze(fs.createReadStream(`${__dirname}/../../files/test.wav`), function(err,analysis){
-        respondJson(request, response, 200, analysis);
+    analyzer.analyze(fs.createReadStream(`${__dirname}/../../files/${request.file.filename}`), function(err,analysis){
+        response.json(resultParser.analyzeBeyondVerbal(analysis));
     });
 }
 
-const notFound = (request, response) => {
-  const responseJson = {
-    message: 'The page you are looking for was not found.',
-    id: 'notFound',
-  };
-
-  respondJson(request, response, 404, responseJson);
-};
-
 module.exports = {
-  notFound,
   getBeyondVerbal,
 };
