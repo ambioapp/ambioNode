@@ -74,7 +74,7 @@ const analyzeATV = (arousal, temper, valence) => {
                 value: 'err: 100',
             };
         }
-    } else if (arousal.Group === 'mid') {
+    } else if (arousal.Group === 'neutral') {
         if (temper.Group === 'low') {
             if (valence.Group === 'negative') {
                 return {
