@@ -36,7 +36,7 @@ const analyzeATV = (arousal, temper, valence) => {
             } else if (valence.Group === 'positive') {
                 return {
                     code: 123,
-                    value: 'joyful'
+                    value: 'content'
                 };
             } else {
                 return {
@@ -48,19 +48,19 @@ const analyzeATV = (arousal, temper, valence) => {
             if (valence.Group === 'negative') {
                 return {
                     code: 131,
-                    value: 'angry',
+                    value: 'inconsolable',
                 };
             }
             else if (valence.Group === 'neutral') {
                 return {
                     code: 132,
-                    value: 'joyful',
+                    value: 'restless',
                 };
             }
             else if (valence.Group === 'positive') {
                 return {
                     code: 133,
-                    value: 'joyful',
+                    value: 'restless',
                 };
             } else {
                 return {
@@ -101,17 +101,17 @@ const analyzeATV = (arousal, temper, valence) => {
             if (valence.Group === 'negative') {
                 return {
                     code: 221,
-                    value: 'depressed',
+                    value: 'restless',
                 };
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 222,
-                    value: 'content',
+                    value: 'relaxed',
                 };
             } else if (valence.Group === 'positive') {
                 return {
                     code: 223,
-                    value: 'joyful',
+                    value: 'content',
                 };
             } else {
                 return {
@@ -123,13 +123,13 @@ const analyzeATV = (arousal, temper, valence) => {
             if (valence.Group === 'negative') {
                 return {
                     code: 231,
-                    value: 'angry',
+                    value: 'frustrated',
                 };
             }
             else if (valence.Group === 'neutral') {
                 return {
                     code: 232,
-                    value: 'joyful',
+                    value: 'restless',
                 };
             }
             else if (valence.Group === 'positive') {
@@ -154,17 +154,17 @@ const analyzeATV = (arousal, temper, valence) => {
             if (valence.Group === 'negative') {
                 return {
                     code: 311,
-                    value: 'depressed',
+                    value: 'frustrated',
                 };
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 312,
-                    value: 'relaxed',
+                    value: 'restless',
                 };
             } else if (valence.Group === 'positive') {
                 return {
                     code: 313,
-                    value: 'content',
+                    value: 'focused',
                 };
             } else {
                 return {
@@ -176,17 +176,17 @@ const analyzeATV = (arousal, temper, valence) => {
             if (valence.Group === 'negative') {
                 return {
                     code: 321,
-                    value: 'depressed',
+                    value: 'angry',
                 };
             } else if (valence.Group === 'neutral') {
                 return {
                     code: 322,
-                    value: 'content',
+                    value: 'stressed',
                 };
             } else if (valence.Group === 'positive') {
                 return {
                     code: 323,
-                    value: 'joyful',
+                    value: 'focused',
                 };
             } else {
                 return {
@@ -204,7 +204,7 @@ const analyzeATV = (arousal, temper, valence) => {
             else if (valence.Group === 'neutral') {
                 return {
                     code: 332,
-                    value: 'joyful',
+                    value: 'stressed',
                 };
             }
             else if (valence.Group === 'positive') {
