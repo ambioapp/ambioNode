@@ -1,25 +1,25 @@
 const moodTableService = require('./moodTable.js');
 
 const analyzeBeyondVerbal = (analysis) => {
-    console.log(analysis);
-    console.log('===Parsing Results===');
-    
-    var responseJSON = {
-        moodID: 0,
-    }
-    
-    var arousal = analysis.result.analysisSegments[0].analysis.Arousal;
-    var temper = analysis.result.analysisSegments[0].analysis.Temper;
-    var valence = analysis.result.analysisSegments[0].analysis.Valence;
-    
-    console.log(`Arousal: ${arousal.Group} Temper: ${temper.Group} Valence: ${valence.Group}`);
-    
-    var parsedResult = moodTableService.analyzeATV(arousal, temper, valence)
-    
-    console.log(`${parsedResult.code}: ${parsedResult.code}`);
-    
-    responseJSON.moodID = parsedResult.value;
-    
+  console.log(analysis);
+  console.log('===Parsing Results===');
+
+  const responseJSON = {
+    moodID: 0,
+  };
+
+  const arousal = analysis.result.analysisSegments[0].analysis.Arousal;
+  const temper = analysis.result.analysisSegments[0].analysis.Temper;
+  const valence = analysis.result.analysisSegments[0].analysis.Valence;
+
+  console.log(`Arousal: ${arousal.Group} Temper: ${temper.Group} Valence: ${valence.Group}`);
+
+  const parsedResult = moodTableService.analyzeATV(arousal, temper, valence);
+
+  console.log(`${parsedResult.code}: ${parsedResult.code}`);
+
+  responseJSON.moodID = parsedResult.value;
+
     /*
     test = {
         Group: "medium",
@@ -30,13 +30,13 @@ const analyzeBeyondVerbal = (analysis) => {
         },
         Value: "34.77"
     }
-    
+
     */
-    
-    
-    return responseJSON;
-}
+
+
+  return responseJSON;
+};
 
 module.exports = {
-    analyzeBeyondVerbal: analyzeBeyondVerbal,
-}
+  analyzeBeyondVerbal,
+};
