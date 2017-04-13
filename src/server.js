@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
 
@@ -12,6 +13,15 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/ambioDataBase';
+
+mongoose.connect(dbURL, (err) => {
+    if (err) {
+        console.log('Could not connect to the database...');
+        throw err;
+    }
+});
 
 const app = express();
 
@@ -32,6 +42,10 @@ app.get('/', (req, res) => {
 
 app.post('/getBeyondVerbal', upload.single('test'), (req, res, next) => {
   jsonHandler.getBeyondVerbal(req, res);
+});
+
+app.post('/createNewUser', (req, res, next) => {
+   jsonHandler.createNewUser(req, res); 
 });
 
 app.use((req, res) => {
