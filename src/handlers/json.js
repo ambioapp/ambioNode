@@ -24,4 +24,5 @@ const createNewUser = (request, response) => {
 
 module.exports = {
   getBeyondVerbal,
+  createNewUser,
 };
