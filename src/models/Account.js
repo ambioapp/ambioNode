@@ -17,12 +17,6 @@ const AccountSchema = new mongoose.Schema({
         trim: true,
         unique: true,
     },
-    password: {
-        type: String,
-        required: true,
-        trim: true,
-        unique: false,
-    },
     firstName: {
         type: String,
         required: true,
