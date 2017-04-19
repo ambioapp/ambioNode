@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -34,18 +35,27 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
+
 app.use(express.static('client'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(staticFileHandler.getIndex()));
 });
 
+app.get('/getAllAccounts', (req, res) => {
+   jsonHandler.getAllAccounts(req, res); 
+});
+
 app.post('/getBeyondVerbal', upload.single('test'), (req, res, next) => {
   jsonHandler.getBeyondVerbal(req, res);
 });
 
-app.post('/createNewUser', (req, res, next) => {
-   jsonHandler.createNewUser(req, res); 
+app.post('/createAccount', (req, res, next) => {
+   jsonHandler.createAccount(req, res); 
 });
 
 app.use((req, res) => {

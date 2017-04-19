@@ -1,6 +1,6 @@
 const models = require('../models');
 
-const Account = models.Acount.AccountModel;
+const Account = models.Account.AccountModel;
 
 const defaultData = {
     userName: 'default',
@@ -10,7 +10,19 @@ const defaultData = {
     dateOfBirth: new Date(2017, 4, 18),
 };
 
-const getAllAcounts = (req, res, callback) => {
+const getAllAcounts = (req, res) => {
+    const callback = (err, docs) => {
+        if (err) {
+            return res.json({err});
+        }
+        
+        return res.json({docs});
+    };
+    
+    findAllAcounts(req, res, callback);
+}
+
+const findAllAcounts = (req, res, callback) => {
     Account.find(callback);
 };
 
@@ -27,6 +39,8 @@ const getAccount = (req, res) => {
 }
 
 const createAccount = (req, res) => {
+    console.log(req.body);
+    
     if (!req.body.userName || !req.body.email) {
         return res.status(400).json({error: 'username and email are required'});
     }

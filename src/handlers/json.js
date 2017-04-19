@@ -14,15 +14,16 @@ const getBeyondVerbal = (request, response) => {
   });
 };
 
-const createNewUser = (request, response) => {
-    const params = {
-        name: 'name',
-    };
-    
-    response.json(dbService.createNewUser(params));
+const createAccount = (request, response) => {    
+    response.json(dbService.createNewUser(request, response));
 };
+
+const getAllAccounts = (request, response) => {
+    response.json(dbService.getAllAccounts(request, response));
+}
 
 module.exports = {
   getBeyondVerbal,
-  createNewUser,
+  createAccount,
+  getAllAccounts,
 };
