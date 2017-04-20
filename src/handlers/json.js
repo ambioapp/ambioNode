@@ -15,7 +15,7 @@ const getBeyondVerbal = (request, response) => {
 };
 
 const createAccount = (request, response) => {    
-    response.json(dbService.createNewUser(request, response));
+    dbService.createNewUser(request, response);
 };
 
 const getAllAccounts = (request, response) => {
