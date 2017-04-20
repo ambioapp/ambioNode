@@ -42,7 +42,7 @@ const createAccount = (req, res) => {
     console.log(req.body);
     
     if (!req.body.userName || !req.body.email) {
-        return res..status(400).json({error: 'username and email are required'});
+        return res.status(400).json({error: 'username and email are required'});
     }
     
     const accountData = {

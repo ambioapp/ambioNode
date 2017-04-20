@@ -19,7 +19,7 @@ const createAccount = (request, response) => {
 };
 
 const getAllAccounts = (request, response) => {
-    response.json(dbService.getAllAccounts(request, response));
+    dbService.getAllAccounts(request, response);
 }
 
 module.exports = {
