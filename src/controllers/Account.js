@@ -58,7 +58,7 @@ const createAccount = (req, res) => {
     const savePromise = newAccount.save();
     
     savePromise.then(() => {
-        res.json({message: 'user accont created'});
+        res.json({message: 'user account created'});
     }).catch((err) => res.json({ err }));
 
     return res;
