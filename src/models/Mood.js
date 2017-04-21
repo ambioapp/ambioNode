@@ -23,7 +23,7 @@ const MoodSchema = new mongoose.Schema({
         unique: false,
     },
     confidence: {
-        type: number,
+        type: Number,
         required: false,
         unique: false,
     },

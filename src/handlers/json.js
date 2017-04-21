@@ -20,10 +20,15 @@ const createAccount = (request, response) => {
 
 const getAllAccounts = (request, response) => {
     dbService.getAllAccounts(request, response);
-}
+};
+
+const getAccountByName = (request, response) => {
+    dbService.getAccountByName(request, response);
+};
 
 module.exports = {
   getBeyondVerbal,
   createAccount,
   getAllAccounts,
+  getAccountByName,
 };

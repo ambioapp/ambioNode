@@ -2,14 +2,6 @@ const models = require('../models');
 
 const Account = models.Account.AccountModel;
 
-const defaultData = {
-    userName: 'default',
-    email: 'default@ambio.tech',
-    firstName: 'default',
-    lastName: 'default',
-    dateOfBirth: new Date(2017, 4, 18),
-};
-
 const getAllAcounts = (req, res) => {
     const callback = (err, docs) => {
         if (err) {
@@ -26,16 +18,23 @@ const findAllAcounts = (req, res, callback) => {
     Account.find(callback);
 };
 
-const getAccount = (req, res) => {
-    const userName = req.query.userName;
+const searchByUserName = (req, res) => {
+    console.log
+    if (!req.query.userName) {
+        return res.status(400).json({error: 'name is required to search'});
+    }
     
-    const callback = (err, doc) => {
+    return Account.findByUserName(req.query.userName, (err, doc) => {
         if (err) {
             return res.json({err});
         }
         
-        return res.json(doc);
-    }
+        if (!doc) {
+            return res.json({error: 'No Account found with that name'});
+        }
+        
+        return res.json({doc: doc});
+    })
 }
 
 const createAccount = (req, res) => {
@@ -66,6 +65,6 @@ const createAccount = (req, res) => {
 
 module.exports = {
     getAllAccounts: getAllAcounts,
-    getAccount: getAccount,
+    searchByUserName: searchByUserName,
     createAccount: createAccount,
 }

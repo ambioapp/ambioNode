@@ -18,7 +18,7 @@ const RelationshipSchema = new mongoose.Schema({
         unique: false,
     },
     sensitivity: {
-        type: number,
+        type: Number,
         required: true,
         unique: false,
     }

@@ -50,6 +50,10 @@ app.get('/getAllAccounts', (req, res) => {
    jsonHandler.getAllAccounts(req, res); 
 });
 
+app.get('/getAccountByName', (req, res) => {
+    jsonHandler.getAccountByName(req, res);
+})
+
 app.post('/getBeyondVerbal', upload.single('test'), (req, res, next) => {
   jsonHandler.getBeyondVerbal(req, res);
 });

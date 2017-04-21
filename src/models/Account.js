@@ -37,6 +37,14 @@ const AccountSchema = new mongoose.Schema({
     },
 });
 
+AccountSchema.statics.findByUserName = (name, callback) => {
+    const search = {
+        userName: name,
+    };
+    
+    return AccountModel.findOne(search, callback);
+}
+
 AccountModel = mongoose.model('Account', AccountSchema);
 
 module.exports.AccountModel = AccountModel;
