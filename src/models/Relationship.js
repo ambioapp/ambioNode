@@ -19,10 +19,18 @@ const RelationshipSchema = new mongoose.Schema({
     },
     sensitivity: {
         type: Number,
-        required: true,
+        required: false,
         unique: false,
     }
 });
+
+RelationshipSchema.statics.findByUser = (userName, callback) => {
+    const search = {
+        userName: userName,
+    };
+    
+    return RelationshipModel.find(search, callback);
+}
 
 RelationshipModel = mongoose.model('Relationship', RelationshipSchema);
 

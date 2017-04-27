@@ -18,8 +18,20 @@ const createAccount = (request, response) => {
     dbService.createNewUser(request, response);
 };
 
+const createRelationship = (request, response) => {
+    dbService.createRelationship(request, response);
+};
+
 const getAllAccounts = (request, response) => {
     dbService.getAllAccounts(request, response);
+};
+
+const getAllRelationships = (request, response) => {
+    dbService.getAllRelationships(request, response);
+};
+
+const getUserRelationships = (request, response) => {
+    dbService.getUserRelationships(request, response);
 };
 
 const getAccountByName = (request, response) => {
@@ -29,6 +41,9 @@ const getAccountByName = (request, response) => {
 module.exports = {
   getBeyondVerbal,
   createAccount,
+  createRelationship,
   getAllAccounts,
+  getAllRelationships,
+  getUserRelationships,
   getAccountByName,
 };

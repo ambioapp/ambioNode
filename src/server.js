@@ -50,9 +50,23 @@ app.get('/getAllAccounts', (req, res) => {
    jsonHandler.getAllAccounts(req, res); 
 });
 
+app.get('/getAllRelationships', (req, res) => {
+    jsonHandler.getAllRelationships(req, res);
+});
+
+app.get('/getUserRelationships', (req, res) => {
+   jsonHandler.getUserRelationships(req, res); 
+});
+
 app.get('/getAccountByName', (req, res) => {
     jsonHandler.getAccountByName(req, res);
-})
+});
+
+
+app.get('/login', (req, res) => {
+    console.log('===Temporary Vesion of Login. Uses /getAccountByName. ===')
+    jsonHandler.getAccountByName(req, res);
+});
 
 app.post('/getBeyondVerbal', upload.single('test'), (req, res, next) => {
   jsonHandler.getBeyondVerbal(req, res);
@@ -61,6 +75,10 @@ app.post('/getBeyondVerbal', upload.single('test'), (req, res, next) => {
 app.post('/createAccount', (req, res, next) => {
    jsonHandler.createAccount(req, res); 
 });
+
+app.post('/createRelationship', (req, res, next) => {
+    jsonHandler.createRelationship(req, res);
+})
 
 app.use((req, res) => {
   res.send('404, not found');

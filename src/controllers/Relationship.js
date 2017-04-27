@@ -18,11 +18,27 @@ const findAllRelationships = (req, res, callback) => {
     Relationship.find(callback);
 };
 
+const getUserRelationships = (req, res) => {    
+    const callback = (err, docs) => {
+        if (err) {
+            return res.json(err);
+        }
+        
+        return res.json({docs});
+    };
+    
+    findUserRelationships(req, res, callback);
+};
+
+const findUserRelationships = (req, res, callback) => {
+    Relationship.findByUser(req.query.userName, callback);
+};
+
 const createRelationship = (req, res) => {
     console.log(req.body);
     
-    if (!req.body.userName || !req.body.followingUserName || !req.body.sensitivity) {
-        return res.status(400).json({error: 'username, FollowingUserName, and Sensitivity are required'});
+    if (!req.body.userName || !req.body.followingUserName) {
+        return res.status(400).json({error: 'username and followingUserName are required'});
     }
     
     console.log('===CHECK ACCOUNTS EXIST HERE===');
@@ -46,5 +62,6 @@ const createRelationship = (req, res) => {
 
 module.exports = {
     getAllRelationships: getAllRelationships,
+    getUserRelationships: getUserRelationships,
     createRelationship: createRelationship,
 };
