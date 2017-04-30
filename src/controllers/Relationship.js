@@ -1,5 +1,4 @@
 const models = require('../models');
-const accountController = require('../contollers/Account.js');
 
 const Relationship = models.Relationship.RelationshipModel;
 
