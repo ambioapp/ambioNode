@@ -1,6 +1,8 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -13,6 +15,15 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/ambioDataBase';
+
+mongoose.connect(dbURL, (err) => {
+    if (err) {
+        console.log('Could not connect to the database...');
+        throw err;
+    }
+});
+
 const app = express();
 
 const staticFileHandler = require('./handlers/staticFiles.js');
@@ -24,15 +35,50 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
+
 app.use(express.static('client'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(staticFileHandler.getIndex()));
 });
 
+app.get('/getAllAccounts', (req, res) => {
+   jsonHandler.getAllAccounts(req, res); 
+});
+
+app.get('/getAllRelationships', (req, res) => {
+    jsonHandler.getAllRelationships(req, res);
+});
+
+app.get('/getUserRelationships', (req, res) => {
+   jsonHandler.getUserRelationships(req, res); 
+});
+
+app.get('/getAccountByName', (req, res) => {
+    jsonHandler.getAccountByName(req, res);
+});
+
+
+app.get('/login', (req, res) => {
+    console.log('===Temporary Vesion of Login. Uses /getAccountByName. ===')
+    jsonHandler.getAccountByName(req, res);
+});
+
 app.post('/getBeyondVerbal', upload.single('test'), (req, res, next) => {
   jsonHandler.getBeyondVerbal(req, res);
 });
+
+app.post('/createAccount', (req, res, next) => {
+   jsonHandler.createAccount(req, res); 
+});
+
+app.post('/createRelationship', (req, res, next) => {
+    jsonHandler.createRelationship(req, res);
+})
 
 app.use((req, res) => {
   res.send('404, not found');
